@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block scripts %}
+<script src="{% static 'multipleUserApp/graph.js' %}" defer></script>
+{% endblock scripts %}
+
+
+{% block navbarcontent %}
+{% include 'multipleUserApp/admin_urls.html' %}
+
+{% endblock navbarcontent %}
+
+
+{% block content %}
+<div class="card mt-5" style="background-color: #fff; border-radius: 50px;
+background: #e0e0e0; box-shadow:  27px 27px 53px #9b9b9b, -27px -27px 53px #ffffff;" >
+    <div class="card-body">
+        <h5 class="card-title">
+            chart
+        </h5>
+        <div >
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+</div>    
+{% endblock content %}
+    
+    

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block scripts %}
+<script src="{% static 'multipleUserApp/graph.js' %}" defer></script>
+<!-- <link rel="stylesheet" href="{% static 'Student/dashboard.css' %}"> -->
+<style>
+    .stud_dashBoard_img{
+        width: 18rem;
+        height: 10rem;
+    }
+    .Text-element{
+        letter-spacing: 2px;
+    }
+    .stu_icon_img{
+        width: 6rem;
+        height: 4.5rem;
+    }
+    .stu_bg{
+        background-color:rgba(255, 255, 255,0.1) ;
+        height: 5rem;
+        width: 7rem;
+        border-radius: 10px;
+    }
+</style>
+{% endblock scripts %}
+
+
+{% block navbarcontent %}
+    {% include 'Student/student_urls.html' %}
+{% endblock navbarcontent %}
+
+
+{% block content %}
+<div class="container-fluid ">
+    <div class="card mt-3" style="background:#004080 ; border-radius: 10px; box-shadow:  20px 20px 40px #9b9b9b, -27px -27px 53px #ffffff; color:#ffffff" >
+        <div class="card-body">
+            <div class="row">
+                <div class="col-6 Text-element">
+                    <h3 class="mt-2 text-"> Hi, {{ user.first_name }}</h3>
+                    <p class="mt-5 " style="font-size: 14px;">Welcome to the official <br>(School Name) student portal</p>
+                </div>
+                <div class="col-6 d-flex align-content-end justify-content-end ">
+                    <img src="{% static 'female_teacher.png' %}" alt="" class="stud_dashBoard_img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card mt-3" style="background:#fff ; border-radius: 10px; box-shadow:  20px 20px 40px #9b9b9b, -27px -27px 53px #ffffff; color:#ffffff" ><h4 style="color: #000;" class="m-2 ">Overview</h4>
+        <div class="row container ">
+            <div class="col-6">
+                <div class="card mt-3" style="background:#0b71b5 ; border-radius: 10px;  color:#ffffff" >
+                    <div class="row">
+                        
+                        <div class="col-6 d-flex justify-content-center  align-items-center  ">
+                            <div class="stu_bg d-flex ">
+                                <img src="{% static 'Purse.png' %}" alt="" class="stu_icon_img mt-2 mb-0  ">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="fs-5 m-3">
+                                School Fees <br>Payment
+                            </p>
+                            <p class="small">Pay fees seamlessly</p>
+                        </div>
+
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+<!-- ------------------------------------------------ -->
+            <div class="col-6">
+                <div class="card mt-3" style="background:#f94144 ; border-radius: 10px;  color:#ffffff" >
+                    <div class="row">
+                        
+                        <div class="col-6 d-flex justify-content-center  align-items-center  ">
+                            <div class="stu_bg d-flex ">
+                                <img src="{% static 'result.png' %}" alt="" class="stu_icon_img mt-2 mb-0  ">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="fs-4 mt-4 ">
+                                Result <br><span>  </span>
+                            </p>
+                            <p class="small">View continous assessment</p>
+                        </div>
+
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+<!-- ------------------------------------------ -->
+            <div class="col-6 mt-4 ">
+                <div class="card mt-3" style="background:#390181 ; border-radius: 10px;  color:#ffffff" >
+                    <div class="row">
+                        
+                        <div class="col-6 d-flex justify-content-center  align-items-center  ">
+                            <div class="stu_bg d-flex ">
+                                <img src="{% static 'attendance.png' %}" alt="" class="stu_icon_img mt-2 mb-0  ">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="fs-4 mt-4 ">
+                                Attendance <br><span></span>
+                            </p>
+                            <p class="small">View class and event attendance</p>
+                        </div>
+
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+<!-- --------------------------------------- -->
+            <div class="col-6 mt-4">
+                <div class="card mt-3" style="background:#ff2e79 ; border-radius: 10px;  color:#ffffff" >
+                    <div class="row">
+                        
+                        <div class="col-6 d-flex justify-content-center  align-items-center  ">
+                            <div class="stu_bg d-flex ">
+                                <img src="{% static 'register.png' %}" alt="" class="stu_icon_img mt-2 mb-0  ">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="fs-5">
+                                Subject <br>Registration
+                            </p>
+                            <p class="small">Register subjects for the session</p>
+                        </div>
+
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-6 mt-4 mb-5">
+                <div class="card mt-3" style="background:#df4fef ; border-radius: 10px;  color:#ffffff" >
+                    <div class="row">
+                        
+                        <div class="col-6 d-flex justify-content-center  align-items-center  ">
+                            <div class="stu_bg d-flex ">
+                                <img src="{% static 'timetable.png' %}" alt="" class="stu_icon_img mt-2 mb-0  ">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <p class="fs-4  mt-4">
+                                TimeTable <br><span></span>
+                            </p>
+                            <p class="small">Be on track with every class</p>
+                        </div>
+
+
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+    

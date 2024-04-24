@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block navbarcontent %}
+{% include 'multipleUserApp/admin_urls.html' %}
+{% endblock navbarcontent %}
+
+{% block scripts %}
+           
+{% endblock scripts %}
+
+
+{% block content %}
+<div class="card" style="border-radius: 50px; box-shadow: 27px 27px 53px #9b9b9b, -27px -27px 53px #ffffff;">
+<h4 class="text-center m-1"> Group Permission {{group.name}}</h4>
+</div>    
+
+<div class="card mt-5 p-5  rounded-5" style="border-radius: 15px;">
+    
+    {% for permission in permissions %}
+        <div>{{permission.name}}</div>
+    {%empty%}
+        <div>No permission assigned</div>
+        
+    {% endfor %}
+        
+</div>
+
+    
+{% endblock content %}
+    
+    
+    
+    

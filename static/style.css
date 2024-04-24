@@ -1,0 +1,58 @@
+body{
+    height: 100vh;
+    /* overflow: hidden; */
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+    font-size: 14px;
+}
+
+.not-visible{
+    display: none;
+}
+
+.dz{
+    border-style: dashed;
+    border-radius: 5px;
+    border-color: #ddd;
+    transition: .5s;
+}
+
+.dz:hover{
+    background-color: palevioletred;
+
+}
+
+.avatar-big{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    
+}
+
+.avatar-sm{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+}
+
+.active-link{
+    border-bottom: 2px solid  blue !important;
+    font-size: 1rem;
+}
+
+
+.norm{
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  27px 27px 53px #9b9b9b,
+         -27px -27px 53px #ffffff;
+    }
+
+/* .stud_dashBoard_img{
+    width: 10rem;
+    height: 30rem;
+} */

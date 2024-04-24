@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block navbarcontent %}
+{% include 'multipleUserApp/admin_urls.html' %}
+{% endblock navbarcontent %}
+
+
+{% block scripts %}
+<script src="{% static 'multipleUserApp/upload.js' %}" defer></script>
+{% endblock scripts %}
+    
+
+{% block content %}
+<div class="text-center">    
+    <h6>Make sure the csv include first_name, last_name, password and role</h6><hr>
+    <p> <b>Teacher:</b>1</p>
+    <p> <b>Student:</b>2</p>
+</div>
+  
+<h5>Upload your file in batches</h5>
+    <br>
+
+    <div id="alert-box">
+
+    </div>
+
+    <form action="" class="dropzone dz" id="my-dropzone">
+        {% csrf_token %}
+        <div class="fallback">
+            <input type="file" name="file" multiple>
+        </div>
+    </form>
+{% endblock content %}
+    
+    
+    
+    

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+
+{% block navbarcontent %}
+{% include 'multipleUserApp/admin_urls.html' %}
+{% endblock navbarcontent %}
+
+
+{% block content %}
+<div class="card rounded-4 mt-3" style="background-color: #fff; border-radius: 15px;">
+
+    <form class="row g-3 ms-4 mt-2" method="GET">
+        <div class="col-4">
+            <label for="name-filter">Filter by Name:</label>
+            <input type="text" class="form-control" id="name-filter" placeholder="Search" name="search-area" value="">
+        </div>
+        
+        <!-- <div class="form-group col-4">
+            <label for="role-filter">Filter by Role:</label>
+            <select class="form-control" id="role-filter" name="role-search">
+                <option value="">All</option>
+                <option value="ADMIN">Admin</option>
+                <option value="TEACHER">Teacher</option>
+                <option value="STUDENT">Student</option>
+                Add other roles as needed
+            </select>
+        </div>     -->
+        
+        <div class="col-3">
+            <button type="submit" class="btn mt-4 mb-3" style="background-color: palevioletred; color: #fff;">Search</button>
+        </div>
+    </form>
+</div>
+    
+<form method="POST" action="{% url 'multipleUserApp:delete_users' %}">
+    {% csrf_token %}
+    <div  class="col-5 mt-2 mb ms-auto">
+        {% if page_obj1.has_previous %}
+            <a style="background-color: #004080; padding: 0.7rem; color: #fff; border-radius: 10px;" href="?page1={{ page_obj1.previous_page_number }}">Previous</a>
+        {% endif %}
+    
+        {% if page_obj1.has_next %}
+            <a style="background-color: #004080; padding: 0.7rem; color: #fff; border-radius: 10px;" href="?page1={{ page_obj1.next_page_number }}">Next</a>
+        {% endif %}
+
+        <button type="submit" class="btn btn-danger">Delete Selected Users</button>
+    </div>
+    
+    
+    {% if messages %}
+        
+        {% for message in messages  %}
+        
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger" role="alert"><h5>{{message}}</h5></div>    
+            {% elif message.tags == 'warning' %}
+                <div class="alert alert-warning " role="alert"><h5>{{message}}</h5></div>    
+            {% else %}
+                <div class="alert alert-success" role="alert"><h5>{{message}}</h5></div>
+            {% endif %}
+                    
+        {% endfor %}
+                    
+    {% endif %}
+        
+    <div class="card rounded-4 mt-3" style="background-color: #fff; border-radius: 15px;">
+        <div class="mt-2 p-2">
+        <h5 class="text-center">{{role}}</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="First Name">First Name</th>
+                <th scope="Last Name">Last Name</th>
+                <th scope="Username">Username</th>
+                <th scope="Role">Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for item in page_obj1 %}
+            <tr>
+                <td>{{ page_obj1.start_index|add:forloop.counter0 }}</td>
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.username }}</td>
+                <td>{{ item.role }}</td>
+                <td>{{ item.id }}</td>
+                <td class="col"><input type="checkbox" name="selected_users" value="{{ item.id }}" ></td>
+                {% empty %}
+                <!-- {{ messages }} -->
+                <div class="alert alert-danger" role="alert"><h5>No users found.</h5></div>`
+                
+            </tr>                
+            {% endfor %}
+                
+        </tbody>
+    </table>
+    
+</div>
+</div>    
+    
+</form>
+
+{% endblock content %}
+    
+    

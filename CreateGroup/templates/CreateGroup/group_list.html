@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block navbarcontent %}
+{% include 'multipleUserApp/admin_urls.html' %}
+{% endblock navbarcontent %}
+
+{% block scripts %}
+           
+{% endblock scripts %}
+
+
+{% block content %}
+<div class="card" style="border-radius: 50px; box-shadow: 27px 27px 53px #9b9b9b, -27px -27px 53px #ffffff;">
+<h4 class="text-center m-1">List of Groups</h4>
+</div>    
+
+
+    <!-- group_list.html -->
+<div class="row d-flex ">
+{% for group in groups %}
+    <div class="col-3 card mt-5 me-3  rounded-5" style="border-radius: 15px;">
+    <h3>{{ group.name }}</h3>
+    <!-- <h3>{{group.groups_with_users}}</h3> -->
+    <form action="{% url 'CreateGroup:add_users_to_group' group.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-success w-100  mb-2 " type="submit">Add Users</button>
+    </form>
+    <form action="{% url 'CreateGroup:remove_users_from_group' group.id %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger w-100  mb-2 type="submit">Remove Users</button>
+    </form>
+    <a href="{% url 'CreateGroup:view_group_permissions' group.id %}" class="">View Permissions</a>
+        <ul>
+            {% for user in group.user_set.all %}
+                <li style="list-style: circle;">{{ user.username }}</li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+    {% endfor %}
+    
+</div>
+
+
+
+    
+{% endblock content %}
+    
+    
+    
+    

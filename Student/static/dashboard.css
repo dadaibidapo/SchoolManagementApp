@@ -1,0 +1,15 @@
+.p{
+    font-size: 11px;
+    font-weight: 400;
+    font-style: normal;
+    /* text-decoration: none solid rgba(0,0,0,0.898); */
+    text-align: start;
+}
+body{
+    background-color: black;
+}
+
+.img{
+    width: 10rem;
+    height: 10rem;
+}
